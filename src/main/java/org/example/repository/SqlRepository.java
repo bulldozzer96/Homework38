@@ -57,13 +57,11 @@ public class SqlRepository implements StudentsRepository {
     public void updateByGroupId(int groupId) {
 
         PreparedStatement ps = null;
-        ResultSet rs = null;
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             ps = conn.prepareStatement(UPDATE_STUDENT_GROUP);
-            ps.setInt(1, 3);
-            rs = ps.executeQuery();
-            rs.next();
+            ps.setInt(1, groupId);
+            ps.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,8 +69,6 @@ public class SqlRepository implements StudentsRepository {
             try {
                 assert ps != null;
                 ps.close();
-                assert rs != null;
-                rs.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

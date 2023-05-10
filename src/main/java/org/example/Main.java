@@ -10,9 +10,11 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        String name = "sdfbfg";
+        String name = StudentGenerator.studentName();
         int age = new Random().nextInt(18, 21);
         int groupId = new Random().nextInt(1, 12);
+
+
 
         Student newStudent = Student.builder()
                 .name(name)
@@ -22,7 +24,7 @@ public class Main {
 
         StudentsRepository studentRepository = new SqlRepository();
         studentRepository.save(newStudent);
-        studentRepository.updateByGroupId(newStudent.getGroupId());
+        studentRepository.updateByGroupId(2);
         List<Student> studentList = studentRepository.findAll();
 
         //System.out.println(studentList);
