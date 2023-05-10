@@ -14,8 +14,6 @@ public class Main {
         int age = new Random().nextInt(18, 21);
         int groupId = new Random().nextInt(1, 12);
 
-
-
         Student newStudent = Student.builder()
                 .name(name)
                 .age(age)
@@ -23,8 +21,10 @@ public class Main {
                 .build();
 
         StudentsRepository studentRepository = new SqlRepository();
+
         studentRepository.save(newStudent);
         studentRepository.updateByGroupId(2);
+
         List<Student> studentList = studentRepository.findAll();
 
         //System.out.println(studentList);

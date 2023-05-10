@@ -5,8 +5,6 @@ import java.util.Random;
 public class StudentGenerator {
 static String name;
 
-
-
     public static String studentName() {
 
         name = "";
